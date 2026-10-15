@@ -205,16 +205,6 @@ python crawler/fetch_reference_data.py
 
 ---
 
-## 九、与姊妹项目的关系
-
-本项目与**智慧问诊 Agent 系统**共用同一套工程骨架（约 80% 复用）：
-LangGraph 9 节点编排 · FAISS+BGE-M3 混合检索 · Neo4j + Text2Cypher 六层防护 ·
-工具层双外壳 · A2A 服务端 · 评测门禁 · 冷热分层会话。
-
-迁移工作量集中在三处：① 数据与 Schema 的域替换；② 各 Agent 的提示词；③ 安全规则
-（合规域多了"拦截结论性表述"这条）。逐项对照见 `TDD.md` 附录 A。
-
----
 
 ## 十、文档版本
 
