@@ -1,0 +1,111 @@
+# ===== 敏感信息 =====
+.env
+.env.local
+.env.production
+*.key
+*.pem
+credentials.json
+secrets.json
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ===== 虚拟环境 =====
+venv/
+.venv/
+ENV/
+env/
+.conda/
+
+# ===== 前端依赖与构建产物 =====
+# node_modules 是 npm install 的产物（数千文件），绝不入库；
+# 前端构建产物 dist/ 已由上方规则覆盖（克隆后执行 cd frontend && npm install && npm run build）。
+node_modules/
+frontend/node_modules/
+.pnpm-store/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ===== 模型文件（太大）=====
+models/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.h5
+*.safetensors
+
+# ===== 数据文件（太大）=====
+# R5：data/ 与 models/ 下的 JSON / 索引一律不入库（派的产物，克隆后由离线流水线重建）
+data/raw/
+data/processed/
+data/knowledge_graph/
+data/indexes/
+*.xlsx
+*.csv
+*.json
+!package.json
+# R5 例外：三份随仓库交付的参考底稿（法规目录 + 种子数据）必须入库
+!data/reference/*.json
+
+# ===== 日志和临时文件 =====
+*.log
+logs/
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# ===== 测试和覆盖率 =====
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ===== Jupyter Notebook =====
+.ipynb_checkpoints/
+*.ipynb
+
+# ===== 文档构建 =====
+docs/_build/
+docs/.doctrees/
+
+# ===== Docker =====
+docker-compose.override.yml
+
+# ===== 其他 =====
+*.pid
+*.seed
+*.pid.lock
+
+# 评估 runner 每次运行生成的报告（已嵌入讲义 §5.6，不入库）
+evals/last_report.md

@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "source": "国家法律法规数据库（全国人大）",
+    "source_url": "https://flk.npc.gov.cn/law-search/index/aggregateData",
+    "fetched_at": "2026-10-14T17:58:51+08:00",
+    "note": "本文件由 crawler/fetch_reference_data.py 采集，请勿手工编辑"
+  },
+  "data": {
+    "flflCount": [
+      {
+        "@type": "com.ruoyi.law.domain.FlfgCountVo",
+        "count": 1,
+        "id": 1,
+        "key": "宪法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.FlfgCountVo",
+        "count": 302,
+        "id": 2,
+        "key": "法律"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.FlfgCountVo",
+        "count": 605,
+        "id": 14,
+        "key": "行政法规"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.FlfgCountVo",
+        "count": 2,
+        "id": 15,
+        "key": "监察法规"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.FlfgCountVo",
+        "count": 15710,
+        "id": 16,
+        "key": "地方法规"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.FlfgCountVo",
+        "count": 562,
+        "id": 27,
+        "key": "司法解释"
+      }
+    ],
+    "xfsd": [
+      {
+        "bbbs": "ff8081819ff54a6401a118eac83e0e45",
+        "title": "呼伦贝尔市城市市容和环境卫生管理条例",
+        "gbrq": "2026-09-23",
+        "score": 0,
+        "flxz": "地方法规"
+      },
+      {
+        "bbbs": "376d938f1ddc4ea4a0a7e8720223e7ef",
+        "title": "呼伦贝尔市人民代表大会常务委员会关于修改《呼伦贝尔市城市市容和环境卫生管理条例》的决定",
+        "gbrq": "2026-09-23",
+        "score": 0,
+        "flxz": "修改、废止的决定"
+      },
+      {
+        "bbbs": "ff8081819ff54a6401a0e6c0c9083735",
+        "title": "中华人民共和国审计法实施条例",
+        "gbrq": "2026-09-19",
+        "score": 0,
+        "flxz": "行政法规"
+      },
+      {
+        "bbbs": "ff8081819ff54ab801a10f16bb54755f",
+        "title": "内蒙古自治区公路条例",
+        "gbrq": "2026-09-19",
+        "score": 0,
+        "flxz": "地方法规"
+      },
+      {
+        "bbbs": "ff8081819ff54ab801a10f160c88755d",
+        "title": "内蒙古自治区地下水保护和管理条例",
+        "gbrq": "2026-09-19",
+        "score": 0,
+        "flxz": "地方法规"
+      }
+    ],
+    "popularSearch": [
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff808081729d1efe01729d50b5c500bf",
+        "flxz": "法律",
+        "gbrq": "2020-05-28",
+        "title": "中华人民共和国民法典"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff808181796a636a0179822a19640c92",
+        "flxz": "法律",
+        "gbrq": "2020-12-26",
+        "title": "中华人民共和国刑法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff8081818a21dc13018b425303b7086d",
+        "flxz": "法律",
+        "gbrq": "2023-09-01",
+        "title": "中华人民共和国民事诉讼法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "2c909fdd678bf17901678bf74d7106b3",
+        "flxz": "法律",
+        "gbrq": "2012-12-28",
+        "title": "中华人民共和国劳动合同法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff80818197af9ccc0197b159c38a0408",
+        "flxz": "法律",
+        "gbrq": "2025-06-27",
+        "title": "中华人民共和国治安管理处罚法"
+      }
+    ],
+    "popularDownload": [
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff808081729d1efe01729d50b5c500bf",
+        "flxz": "法律",
+        "gbrq": "2020-05-28",
+        "title": "中华人民共和国民法典"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff808181796a636a0179822a19640c92",
+        "flxz": "法律",
+        "gbrq": "2020-12-26",
+        "title": "中华人民共和国刑法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "2933e1a00644487bbd43d0960cb01931",
+        "flxz": "法律",
+        "gbrq": "2025-12-27",
+        "title": "中华人民共和国危险化学品安全法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff8081817a66b816017a7956b7db0ad4",
+        "flxz": "法律",
+        "gbrq": "2021-06-10",
+        "title": "中华人民共和国安全生产法"
+      },
+      {
+        "@type": "com.ruoyi.law.domain.sync.IndexFlfgVo",
+        "bbbs": "ff8081819b697220019bc0aa9f146bf4",
+        "flxz": "行政法规",
+        "gbrq": "2025-12-25",
+        "title": "中华人民共和国增值税法实施条例"
+      }
+    ],
+    "xf": {
+      "bbbs": "2c909fdd678bf17901678bf5a483004b",
+      "title": "中华人民共和国宪法（2018年修正文本）"
+    },
+    "flcaStatus": 0
+  }
+}

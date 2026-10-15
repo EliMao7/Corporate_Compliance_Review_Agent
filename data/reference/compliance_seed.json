@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "type": "领域模型种子数据（人工整理，非自动抽取）",
+    "purpose": "把「法规分类数据」与「企业合规审查的领域模型」串起来：定义图谱的 8 类节点与 12 类关系的首批实例，供离线抽取流水线在此基础上扩展。",
+    "basis": [
+      "《国务院办公厅关于加强行政规范性文件制定和监督管理工作的通知》（国办发〔2018〕37号）—— 关于行政规范性文件常见违法情形的规定",
+      "《中华人民共和国行政许可法》《中华人民共和国行政处罚法》《中华人民共和国行政强制法》—— 关于许可/处罚/强制设定权限的规定",
+      "《优化营商环境条例》《公平竞争审查条例》—— 关于不得设置不合理限制与公平竞争审查的要求",
+      "TDD.md §2.3.5 定义的图谱 Schema（NodeType / RelationType）"
+    ],
+    "honest_note": "本文件是领域模型的骨架示例，不是从法规库自动抽取的产物。真实条文级抽取由离线流水线 scripts/run_extraction.py 完成；本文件用于建图前先把模型跑通。",
+    "generated_for": "Corporate_Compliance_Review_Agent",
+    "version": "1.0",
+    "date": "2026-10-14"
+  },
+
+  "nodes": {
+    "Matter": [
+      {"name": "行政许可设定", "domain": "市场准入", "description": "制度中设定或许可变相设定行政许可、审批、备案前置的事项", "aliases": ["设置审批", "准入许可", "前置审批"]},
+      {"name": "行政处罚设定", "domain": "市场监管", "description": "制度中设定或许可设定罚款、没收、吊销等处罚的事项", "aliases": ["设定罚款", "处罚条款", "违规处罚"]},
+      {"name": "行政强制设定", "domain": "市场监管", "description": "制度中设定查封、扣押、强制拆除等强制措施的事项", "aliases": ["强制措施", "查封扣押"]},
+      {"name": "招标投标", "domain": "公共交易", "description": "工程建设、货物服务采购中的招标投标活动管理事项", "aliases": ["招投标", "招标", "投标"]},
+      {"name": "政府采购", "domain": "公共交易", "description": "使用财政性资金的采购活动管理事项", "aliases": ["采购管理", "集中采购"]},
+      {"name": "安全生产", "domain": "安全环保", "description": "生产经营单位的安全生产责任与管理事项", "aliases": ["安全管理", "安全生产责任"]},
+      {"name": "环境保护", "domain": "安全环保", "description": "排污、环评、废弃物管理等环境保护事项", "aliases": ["环保", "排污管理", "环境影响评价"]},
+      {"name": "劳动用工", "domain": "人力资源", "description": "劳动合同、工时、社保、薪酬等用工管理事项", "aliases": ["人事管理", "劳动合同", "用工管理"]},
+      {"name": "数据合规", "domain": "数字治理", "description": "个人信息保护、数据安全、数据出境等管理事项", "aliases": ["个人信息保护", "数据安全"]},
+      {"name": "公平竞争", "domain": "市场准入", "description": "涉及市场主体经济活动的政策措施的竞争影响事项", "aliases": ["公平竞争审查", "竞争影响", "市场壁垒"]},
+      {"name": "供应商管理", "domain": "公共交易", "description": "企业对外部供应商的准入、评价、退出管理事项（含《供应商管理办法》类制度）", "aliases": ["供应商准入", "供应商评价"]}
+    ],
+
+    "RiskPoint": [
+      {"name": "无依据增设行政许可", "severity": "redline", "description": "在没有法律、法规依据的情况下自行设定行政许可", "legal_basis": ["行政许可法"]},
+      {"name": "变相设置审批前置", "severity": "redline", "description": "以备案、登记、认证、合格证书等名义，实质设置准入前置条件", "legal_basis": ["行政许可法", "优化营商环境条例"]},
+      {"name": "无依据增设行政处罚", "severity": "redline", "description": "自行创设行政处罚种类，企业等主体无权设定行政处罚", "legal_basis": ["行政处罚法"]},
+      {"name": "自行设定罚款数额", "severity": "redline", "description": "在制度中直接规定具体罚款金额与幅度", "legal_basis": ["行政处罚法"]},
+      {"name": "无依据增设行政强制", "severity": "redline", "description": "自行设定查封、扣押、强制拆除等行政强制措施", "legal_basis": ["行政强制法"]},
+      {"name": "超越制定权限", "severity": "high", "description": "制定主体越权规定属于上级或其他机关职权范围的事项", "legal_basis": ["立法法", "国办发〔2018〕37号"]},
+      {"name": "违法减损权益", "severity": "high", "description": "违法减损公民、法人和其他组织的合法权益或增加其义务", "legal_basis": ["国办发〔2018〕37号"]},
+      {"name": "违反公平竞争审查", "severity": "high", "description": "设置不合理限制或隐性壁垒，未履行公平竞争审查程序", "legal_basis": ["公平竞争审查条例", "优化营商环境条例"]}
+    ],
+
+    "Measure": [
+      {"name": "改为援引上位法既有条款", "scenario": "制度需要体现约束力，但上位法已有相应规定时", "key_points": ["引用上位法的具体条款", "明确依法承担法律责任", "不自行创设处罚种类与幅度"]},
+      {"name": "改用合同违约责任", "scenario": "对外部供应商、合作方的管理诉求", "key_points": ["以平等主体之间的约定实现", "约定违约金、扣减货款、终止合作等", "不涉及行政处罚权"]},
+      {"name": "建立内部评价与准入机制", "scenario": "供应商分级管理、内部供应商管理", "key_points": ["以评价扣分、合作等级调整实现", "不设置无依据的市场准入限制"]},
+      {"name": "履行法定制定程序", "scenario": "规范性文件制定过程中", "key_points": ["公开征求意见", "合法性审核", "集体审议决定", "公开发布"]},
+      {"name": "开展公平竞争审查", "scenario": "涉及市场主体经济活动的政策措施", "key_points": ["对照公平竞争审查标准逐项审查", "形成书面审查结论"]},
+      {"name": "报请主管部门审查或备案", "scenario": "涉及法定资质、许可事项时", "key_points": ["明确按法定资质要求执行", "必要时报送主管部门", "不代替主管部门作出决定"]}
+    ],
+
+    "Authority": [
+      {"name": "市场监督管理部门", "level": "国家级/省级/市级", "description": "市场主体登记、市场监管、反不正当竞争、价格监督等"},
+      {"name": "生态环境主管部门", "level": "国家级/省级/市级", "description": "环境影响评价、排污许可、环境执法等"},
+      {"name": "应急管理部门", "level": "国家级/省级/市级", "description": "安全生产综合监督管理、应急管理等"},
+      {"name": "人力资源社会保障部门", "level": "国家级/省级/市级", "description": "劳动关系、社会保险、劳动监察等"},
+      {"name": "税务部门", "level": "国家级/省级/市级", "description": "税收征管、税务检查等"},
+      {"name": "发展改革部门", "level": "国家级/省级/市级", "description": "投资项目审批、产业政策、招投标综合协调等"},
+      {"name": "住房城乡建设部门", "level": "国家级/省级/市级", "description": "工程建设管理、建筑业市场监管等"},
+      {"name": "财政部门", "level": "国家级/省级/市级", "description": "政府采购监督管理、预算管理等"},
+      {"name": "网信部门", "level": "国家级/省级/市级", "description": "个人信息保护、数据安全、网络安全监督管理等"}
+    ],
+
+    "Domain": [
+      {"name": "市场准入", "category": "经济管理", "description": "涉及市场主体进入特定行业或领域的条件与程序"},
+      {"name": "市场监管", "category": "经济管理", "description": "对市场主体经营行为的监督管理"},
+      {"name": "公共交易", "category": "经济管理", "description": "招标投标、政府采购等公共资源配置活动"},
+      {"name": "安全环保", "category": "社会管理", "description": "安全生产、环境保护等社会管理领域"},
+      {"name": "人力资源", "category": "社会管理", "description": "劳动关系、社会保险、用工管理"},
+      {"name": "数字治理", "category": "社会管理", "description": "数据安全、个人信息保护等数字领域治理"}
+    ],
+
+    "Evidence": [
+      {"name": "中华人民共和国行政许可法", "level": "法律", "doc_no": "", "description": "行政许可的设定权限与程序要求"},
+      {"name": "中华人民共和国行政处罚法", "level": "法律", "doc_no": "", "description": "行政处罚的种类与设定权限"},
+      {"name": "中华人民共和国行政强制法", "level": "法律", "doc_no": "", "description": "行政强制的种类与设定权限"},
+      {"name": "优化营商环境条例", "level": "行政法规", "doc_no": "", "description": "不得设置不合理限制、保障市场主体权益"},
+      {"name": "公平竞争审查条例", "level": "行政法规", "doc_no": "", "description": "政策措施制定中的公平竞争审查要求"},
+      {"name": "国务院办公厅关于加强行政规范性文件制定和监督管理工作的通知", "level": "行政规范性文件", "doc_no": "国办发〔2018〕37号", "description": "行政规范性文件的制定权限与常见违法情形"}
+    ],
+
+    "Guideline": [
+      {"name": "以合同约定替代管理性处罚", "type": "推荐", "description": "企业对外部主体的管理诉求，优先通过合同约定实现"},
+      {"name": "以援引替代创设", "type": "推荐", "description": "上位法已有规定的，制度中援引而非重写"},
+      {"name": "以内部评价替代准入限制", "type": "推荐", "description": "以评价机制实现管理目标，不设置准入壁垒"},
+      {"name": "自行创设处罚种类或幅度", "type": "避免", "description": "企业等主体无行政处罚设定权"},
+      {"name": "以备案/认证名义设置准入前置", "type": "避免", "description": "可能被认定为变相行政许可"}
+    ],
+
+    "Precaution": [
+      {"content": "制定制度前先明确适用范围与制定权限", "category": "制定阶段", "importance": "high"},
+      {"content": "涉及市场主体经济活动的，须履行公平竞争审查", "category": "审查阶段", "importance": "high"},
+      {"content": "涉及处罚、许可、强制的，须核对上位法有无依据", "category": "审查阶段", "importance": "high"},
+      {"content": "发布前由法务或执业律师复核", "category": "发布阶段", "importance": "medium"}
+    ]
+  },
+
+  "relations": [
+    {"type": "HAS_RISK", "start": "行政许可设定", "end": "无依据增设行政许可"},
+    {"type": "HAS_RISK", "start": "行政许可设定", "end": "变相设置审批前置"},
+    {"type": "HAS_RISK", "start": "行政处罚设定", "end": "无依据增设行政处罚"},
+    {"type": "HAS_RISK", "start": "行政处罚设定", "end": "自行设定罚款数额"},
+    {"type": "HAS_RISK", "start": "行政强制设定", "end": "无依据增设行政强制"},
+    {"type": "HAS_RISK", "start": "公平竞争", "end": "违反公平竞争审查"},
+    {"type": "HAS_RISK", "start": "招标投标", "end": "违反公平竞争审查"},
+    {"type": "HAS_RISK", "start": "政府采购", "end": "违反公平竞争审查"},
+
+    {"type": "GOVERNED_BY", "start": "行政许可设定", "end": "市场监督管理部门"},
+    {"type": "GOVERNED_BY", "start": "招标投标", "end": "发展改革部门"},
+    {"type": "GOVERNED_BY", "start": "政府采购", "end": "财政部门"},
+    {"type": "GOVERNED_BY", "start": "安全生产", "end": "应急管理部门"},
+    {"type": "GOVERNED_BY", "start": "环境保护", "end": "生态环境主管部门"},
+    {"type": "GOVERNED_BY", "start": "劳动用工", "end": "人力资源社会保障部门"},
+    {"type": "GOVERNED_BY", "start": "数据合规", "end": "网信部门"},
+
+    {"type": "ADDRESSED_BY", "start": "行政许可设定", "end": "改为援引上位法既有条款"},
+    {"type": "ADDRESSED_BY", "start": "行政处罚设定", "end": "改用合同违约责任"},
+    {"type": "ADDRESSED_BY", "start": "行政处罚设定", "end": "改为援引上位法既有条款"},
+    {"type": "ADDRESSED_BY", "start": "公平竞争", "end": "开展公平竞争审查"},
+    {"type": "ADDRESSED_BY", "start": "行政许可设定", "end": "报请主管部门审查或备案"},
+    {"type": "ADDRESSED_BY", "start": "政府采购", "end": "履行法定制定程序"},
+
+    {"type": "REQUIRES_EVIDENCE", "start": "行政许可设定", "end": "中华人民共和国行政许可法"},
+    {"type": "REQUIRES_EVIDENCE", "start": "行政处罚设定", "end": "中华人民共和国行政处罚法"},
+    {"type": "REQUIRES_EVIDENCE", "start": "行政强制设定", "end": "中华人民共和国行政强制法"},
+    {"type": "REQUIRES_EVIDENCE", "start": "公平竞争", "end": "公平竞争审查条例"},
+    {"type": "REQUIRES_EVIDENCE", "start": "招标投标", "end": "优化营商环境条例"},
+    {"type": "REQUIRES_EVIDENCE", "start": "行政许可设定", "end": "国务院办公厅关于加强行政规范性文件制定和监督管理工作的通知"},
+
+    {"type": "APPLIES_TO_DOMAIN", "start": "行政许可设定", "end": "市场准入"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "行政处罚设定", "end": "市场监管"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "招标投标", "end": "公共交易"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "政府采购", "end": "公共交易"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "安全生产", "end": "安全环保"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "环境保护", "end": "安全环保"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "劳动用工", "end": "人力资源"},
+    {"type": "APPLIES_TO_DOMAIN", "start": "数据合规", "end": "数字治理"},
+
+    {"type": "CONFLICTS_WITH", "start": "建立内部评价与准入机制", "end": "开展公平竞争审查"},
+    {"type": "HAS_SIDE_EFFECT", "start": "报请主管部门审查或备案", "end": "超越制定权限"},
+
+    {"type": "RECOMMENDS_GUIDELINE", "start": "行政处罚设定", "end": "以合同约定替代管理性处罚"},
+    {"type": "RECOMMENDS_GUIDELINE", "start": "行政许可设定", "end": "以援引替代创设"},
+    {"type": "RECOMMENDS_GUIDELINE", "start": "行政强制设定", "end": "以援引替代创设"},
+    {"type": "RECOMMENDS_GUIDELINE", "start": "供应商管理", "end": "以内部评价替代准入限制"},
+
+    {"type": "HAS_PRECAUTION", "start": "行政许可设定", "end": "涉及处罚、许可、强制的，须核对上位法有无依据"},
+    {"type": "HAS_PRECAUTION", "start": "公平竞争", "end": "涉及市场主体经济活动的，须履行公平竞争审查"},
+    {"type": "HAS_PRECAUTION", "start": "行政处罚设定", "end": "发布前由法务或执业律师复核"},
+    {"type": "HAS_PRECAUTION", "start": "劳动用工", "end": "制定制度前先明确适用范围与制定权限"}
+  ]
+}
