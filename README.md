@@ -206,7 +206,7 @@ python crawler/fetch_reference_data.py
 ---
 
 
-## 十、文档版本
+## 九、文档版本
 
 | 文档 | 版本 | 日期 |
 |---|---|---|
@@ -215,7 +215,7 @@ python crawler/fetch_reference_data.py
 
 ---
 
-## 十一、免责声明
+## 十、免责声明
 
 本项目为**技术示范项目**，用于展示大模型 + 知识图谱在企业合规场景的落地形态。
 
