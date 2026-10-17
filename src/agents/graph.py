@@ -1,6 +1,9 @@
 """
 LangGraph State Graph Orchestration
-Orchestrates 9 agents into a complete corporate-compliance review system.
+Orchestrates 9 nodes into a complete corporate-compliance review system.
+
+⚠️ 9 个是**节点**（nodes），不是 9 个子 Agent：对外只有 1 个 Agent 身份，
+   其中仅 regulation_knowledge 节点内部是真 ReAct（create_react_agent）。
 
 ⚠️ 本图**没有并行分支**：条件边是"按意图分流，单链路执行"——一次请求只走一条主链路。
    不要把"统一汇入安全检查"理解成并行汇聚。
