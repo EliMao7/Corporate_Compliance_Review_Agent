@@ -145,7 +145,7 @@ def build_agent_card(base_url: str | None = None) -> AgentCard:
 
     return AgentCard(
         name=AGENT_NAME,
-        description="基于知识图谱的企业合规审查系统：9 个 Agent 协同完成制度 / 合同合规排查、"
+        description="基于知识图谱的企业合规审查系统：9 个节点协同完成制度 / 合同合规排查、"
                     "归口部门定位、合规措施建议、法规条文咨询与高风险红线提示，"
                     "全部回答经强制安全门附加免责声明。",
         version=AGENT_VERSION,
